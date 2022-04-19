@@ -17,5 +17,7 @@ contract ProprietaryWallet is Owner {
         mapping(uint => Payment) payments;
     }
 
+    mapping(address => Balance) Wallets;
+
 
 }
