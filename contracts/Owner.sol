@@ -10,5 +10,10 @@ contract Owner {
         owner = msg.sender;
     }
 
+    modifier isOwner() {
+        require(msg.sender == owner, "You are not the owner of the wallet");
+        _;
+    }
+
 }
 
