@@ -29,6 +29,12 @@ contract ProprietaryWallet is Owner {
         _to.transfer(amount);
     }
 
+    function withdrawMoney(address payable _to, uint _amount) public {
+        require(_amount <= Wallets[msg.sender].totalBalance, "Not enough funds");
+        Wallets[msg.sender].totalBalance -= _amount;
+        _to.transfer(_amount);
+    }
+ 
     receive() external payable {
         Payment memory thisPayment = Payment(msg.value, block.timestamp);
         Wallets[msg.sender].totalBalance += msg.value;
