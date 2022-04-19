@@ -19,6 +19,10 @@ contract ProprietaryWallet is Owner {
 
     mapping(address => Balance) Wallets;
 
+    function getBalance() public isOwner view returns(uint) {
+        return address(this).balance;
+    }
+
     receive() external payable {
         Payment memory thisPayment = Payment(msg.value, block.timestamp);
         Wallets[msg.sender].totalBalance += msg.value;
