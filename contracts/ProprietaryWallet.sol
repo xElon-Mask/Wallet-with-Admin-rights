@@ -11,6 +11,11 @@ contract ProprietaryWallet is Owner {
         uint timestamp;
     }
 
-    
+    struct Balance {
+        uint totalBalance;
+        uint numPayments;
+        mapping(uint => Payment) payments;
+    }
+
 
 }
