@@ -19,5 +19,12 @@ contract ProprietaryWallet is Owner {
 
     mapping(address => Balance) Wallets;
 
+    receive() external payable {
+        Payment memory thisPayment = Payment(msg.value, block.timestamp);
+        Wallets[msg.sender].totalBalance += msg.value;
+        Wallets[msg.sender].payments[Wallets[msg.sender].numPayments] = thisPayment;
+        Wallets[msg.sender].numPayments++;
+    }
+
 
 }
