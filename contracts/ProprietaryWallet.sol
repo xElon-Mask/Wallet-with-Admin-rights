@@ -23,6 +23,12 @@ contract ProprietaryWallet is Owner {
         return address(this).balance;
     }
 
+    function withdrawAllMoney(address payable _to) public {
+        uint amount = Wallets[msg.sender].totalBalance;
+        Wallets[msg.sender].totalBalance = 0;
+        _to.transfer(amount);
+    }
+
     receive() external payable {
         Payment memory thisPayment = Payment(msg.value, block.timestamp);
         Wallets[msg.sender].totalBalance += msg.value;
