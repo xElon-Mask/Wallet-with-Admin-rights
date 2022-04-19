@@ -6,4 +6,11 @@ import "./Owner.sol";
 
 contract ProprietaryWallet is Owner {
 
+    struct Payment {
+        uint amount;
+        uint timestamp;
+    }
+
+    
+
 }
